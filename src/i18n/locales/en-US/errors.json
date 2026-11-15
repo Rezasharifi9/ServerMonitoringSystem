@@ -1,0 +1,11 @@
+{
+  "generic": "The request could not be completed.",
+  "requestFailed": "The request failed.",
+  "sessionEnded": "The backend session ended.",
+  "passkeyHttps": "Open the panel over HTTPS in a compatible browser to use a passkey.",
+  "passkeyRegisterFailed": "The passkey could not be registered on this device. Try again.",
+  "passkeyVerifyFailed": "The passkey could not be verified on this device. Try again, or sign in with a password.",
+  "backendUnreachable": "The backend could not be reached.",
+  "agentBundleFailed": "The agent bundle could not be downloaded.",
+  "tunnelCleanupUnconfirmed": "Cleanup of one tunnel was not confirmed. Check the deployment history."
+}

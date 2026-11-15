@@ -1,0 +1,25 @@
+# Managed by the NodeGuard Agent installer.
+[Unit]
+Description=NodeGuard iperf3 test worker
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=exec
+DynamicUser=yes
+LoadCredential=agent-token:/etc/nodeguard/agent.token
+ExecStart=/usr/bin/python3 -B -s /opt/nodeguard/agent/iperf_worker.py /etc/nodeguard/agent.json --token-file ${CREDENTIALS_DIRECTORY}/agent-token
+Restart=on-failure
+RestartSec=10
+NoNewPrivileges=yes
+CapabilityBoundingSet=
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+PrivateTmp=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+
+[Install]
+WantedBy=multi-user.target

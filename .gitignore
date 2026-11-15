@@ -39,3 +39,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local NodeGuard database
+/.nodeguard/
+/agent/releases/
+!.env.example
+# Local vendor checkouts and Python bytecode
+/V2board/
+/V2bX/
+__pycache__/
+*.py[cod]

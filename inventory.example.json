@@ -1,0 +1,117 @@
+{
+  "servers": [
+    {
+      "id": "ir-main",
+      "name": "ایران اصلی",
+      "country": "ایران",
+      "countryCode": "IR",
+      "city": "تهران",
+      "publicIpv4": "192.0.2.10",
+      "tunnelIp": "10.20.0.1",
+      "provider": "Example",
+      "os": "Ubuntu",
+      "roles": [
+        "iran-primary"
+      ]
+    },
+    {
+      "id": "ir-backup",
+      "name": "ایران پشتیبان",
+      "country": "ایران",
+      "countryCode": "IR",
+      "city": "شیراز",
+      "publicIpv4": "192.0.2.11",
+      "tunnelIp": "10.21.0.1",
+      "provider": "Example",
+      "os": "Ubuntu",
+      "roles": [
+        "iran-backup"
+      ]
+    },
+    {
+      "id": "exit-1",
+      "name": "خروج خارجی",
+      "country": "آلمان",
+      "countryCode": "DE",
+      "city": "فرانکفورت",
+      "publicIpv4": "198.51.100.10",
+      "tunnelIp": "10.20.0.2",
+      "provider": "Example",
+      "os": "Debian",
+      "roles": [
+        "foreign"
+      ]
+    },
+    {
+      "id": "observer-1",
+      "name": "مشاهده‌گر مستقل",
+      "country": "هلند",
+      "countryCode": "NL",
+      "city": "آمستردام",
+      "publicIpv4": "203.0.113.20",
+      "provider": "Example",
+      "os": "Debian",
+      "roles": [
+        "foreign"
+      ]
+    },
+    {
+      "id": "observer-2",
+      "name": "مشاهده‌گر مستقل دوم",
+      "country": "هلند",
+      "countryCode": "NL",
+      "city": "آمستردام",
+      "publicIpv4": "203.0.113.21",
+      "provider": "Example",
+      "os": "Debian",
+      "roles": [
+        "foreign"
+      ]
+    }
+  ],
+  "tunnels": [
+    {
+      "id": "tun-main",
+      "name": "مسیر اصلی",
+      "technology": "GRE",
+      "iranServerId": "ir-main",
+      "foreignServerId": "exit-1",
+      "side": "primary",
+      "mtu": 1400,
+      "interfaceName": "gre1"
+    },
+    {
+      "id": "tun-backup",
+      "name": "مسیر پشتیبان",
+      "technology": "WireGuard",
+      "iranServerId": "ir-backup",
+      "foreignServerId": "exit-1",
+      "side": "backup",
+      "mtu": 1420,
+      "interfaceName": "wg1"
+    },
+    {
+      "id": "tun-forward-lab",
+      "name": "هدایت پورت آزمایشی",
+      "technology": "GOST",
+      "iranServerId": "ir-main",
+      "foreignServerId": "exit-1",
+      "side": "primary",
+      "mtu": 1500
+    }
+  ],
+  "nodes": [
+    {
+      "id": "node-1",
+      "name": "نود فرانکفورت",
+      "protocol": "VLESS",
+      "port": 443,
+      "domain": "de.nodeguard.example",
+      "primaryServerId": "ir-main",
+      "backupServerId": "ir-backup",
+      "foreignServerId": "exit-1",
+      "primaryTunnelId": "tun-main",
+      "backupTunnelId": "tun-backup"
+    }
+  ]
+}

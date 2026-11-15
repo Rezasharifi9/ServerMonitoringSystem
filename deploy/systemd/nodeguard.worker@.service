@@ -1,0 +1,26 @@
+[Unit]
+Description=NodeGuard %i worker
+Wants=nodeguard.control.service
+After=nodeguard.control.service
+PartOf=nodeguard.control.service
+StartLimitIntervalSec=120s
+StartLimitBurst=5
+
+[Service]
+Type=exec
+DynamicUser=yes
+User=ng-worker-%i
+WorkingDirectory=/opt/nodeguard
+LoadCredential=worker.env:/etc/nodeguard/control-plane/workers/%i.env
+Environment=NODEGUARD_CONTROL_URL=http://127.0.0.1:3000
+ExecStart=/usr/bin/node --env-file=${CREDENTIALS_DIRECTORY}/worker.env /opt/nodeguard/agent/failover_worker.mjs --%i
+UMask=0077
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+Restart=on-failure
+RestartSec=15s
+
+[Install]
+WantedBy=multi-user.target

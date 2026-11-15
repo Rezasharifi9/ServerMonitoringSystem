@@ -1,0 +1,10 @@
+import assert from "node:assert/strict";
+const { tunnelInstallationWarning } = await import("../src/lib/tunnel-installation-warning.ts");
+const run = { status: "rolled_back", steps: [{ job: { status: "failed", detail: "tcp_target_unreachable" } }] };
+assert.equal(tunnelInstallationWarning(run), "destination_service");
+assert.equal(tunnelInstallationWarning(run, ['Run nodes failed: request cert error: acme: connection refused']), "tls_certificate");
+assert.equal(tunnelInstallationWarning(run, ['Certificate obtained successfully']), "destination_service");
+assert.equal(tunnelInstallationWarning(run, ['API request failed']), "destination_service");
+assert.equal(tunnelInstallationWarning({ ...run, status: "succeeded" }, ['request cert error']), undefined);
+assert.equal(tunnelInstallationWarning({ ...run, steps: [{ job: { status: "failed", detail: "reverted" } }] }, ['request cert error']), undefined);
+console.log("PASS: certificate warnings require failed destination checks and certificate error evidence.");

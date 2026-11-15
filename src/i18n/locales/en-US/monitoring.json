@@ -1,0 +1,21 @@
+{
+  "healthTitle": "Infrastructure health",
+  "healthDescription": "Health is not a single ping. The agent, host, network, tunnel, V2bX, DNS, end-to-end connectivity, and standby readiness are assessed separately.",
+  "overallScore": "Overall score",
+  "withoutStandby": "Nodes without a ready standby",
+  "dependencyTitle": "Sample dependency",
+  "dependencyBody": "The user depends on the domain, the domain on the Iran server, the Iran server on the tunnel, and the tunnel on V2bX on the foreign server. A failure in one layer does not necessarily break the others.",
+  "activeProbes24h": "Active-path probes over the last 24 hours",
+  "availabilityTrend": "Availability trend",
+  "searchNodes": "Search nodes",
+  "chartRange": "Chart range",
+  "readingMetrics": "Reading metrics…",
+  "lastSample": "Last sample",
+  "metricsFailed": "Metrics could not be read.",
+  "noMetrics": "No metrics were recorded in this range.",
+  "readingProbes": "Reading probes",
+  "probeHistoryFailed": "Probe history could not be read.",
+  "noActiveProbes": "No active-path probes were recorded in this range.",
+  "successfulProbes": "Successful probes (%)",
+  "availability": "Availability"
+}

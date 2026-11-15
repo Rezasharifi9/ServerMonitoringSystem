@@ -1,0 +1,28 @@
+# Managed by the NodeGuard Agent installer.
+[Unit]
+Description=NodeGuard telemetry agent
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=exec
+DynamicUser=yes
+StateDirectory=nodeguard-telemetry
+StateDirectoryMode=0700
+SupplementaryGroups=systemd-journal
+LoadCredential=agent-token:/etc/nodeguard/agent.token
+ExecStart=/usr/bin/python3 -B -s /opt/nodeguard/agent/nodeguard_agent.py /etc/nodeguard/agent.json --token-file ${CREDENTIALS_DIRECTORY}/agent-token
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=yes
+CapabilityBoundingSet=CAP_NET_RAW
+AmbientCapabilities=CAP_NET_RAW
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+
+[Install]
+WantedBy=multi-user.target

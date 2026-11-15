@@ -1,0 +1,20 @@
+{
+  "endpoint": "https://nodeguard.example/api/v1/agent/telemetry",
+  "serverId": "replace-with-inventory-id",
+  "tokenFile": "/etc/nodeguard/agent.token",
+  "interface": "eth0",
+  "intervalSec": 20,
+  "v2bxUnit": "V2bX.service",
+  "v2bxLogTags": {},
+  "debugLogsUntil": 0,
+  "tunnels": [
+    {
+      "id": "replace-with-tunnel-id",
+      "interface": "gre1",
+      "peer": "192.0.2.2"
+    }
+  ],
+  "forwarderProbes": [],
+  "proxyProbes": [],
+  "iperfTargets": []
+}

@@ -1,0 +1,8 @@
+{
+  "Backhaul:official:amd64": {"version":"v0.7.2","url":"https://github.com/Musixal/Backhaul/releases/download/v0.7.2/backhaul_linux_amd64.tar.gz","sha256":"57bf95c2eabeddb1152d2e94ac42f4310883ce0fb909ee2a57bd53503b2dabbc","member":"backhaul"},
+  "Backhaul:official:arm64": {"version":"v0.7.2","url":"https://github.com/Musixal/Backhaul/releases/download/v0.7.2/backhaul_linux_arm64.tar.gz","sha256":"9a424c97ff16fc3f682e8314c418790d2b5bf3136e008edbb6cd402ea00999f6","member":"backhaul"},
+  "Rathole:official:amd64": {"version":"v0.5.0","url":"https://github.com/rathole-org/rathole/releases/download/v0.5.0/rathole-x86_64-unknown-linux-gnu.zip","sha256":"3e7d0d0f365120cd3cd351d147d1a12ee960c8068b464d4dd533a3821873b80e","member":"rathole"},
+  "Rathole:official:arm64": {"version":"v0.5.0","url":"https://github.com/rathole-org/rathole/releases/download/v0.5.0/rathole-aarch64-unknown-linux-musl.zip","sha256":"fa4a6fc63d86f8f1faa7c103a845e4715ce79a048455c0eec897b27237576564","member":"rathole"},
+  "Rathole:modified:amd64": {"version":"musixal-ed49cdd-mod","url":"https://raw.githubusercontent.com/Musixal/Rathole-Tunnel/ed49cdd88945d366141fa473dc996a6c0e57983d/core/rathole_modified.zip","sha256":"3dac37a4440ccf6c580edc8e53c2719c1da5c84c40e5f46f8a36965b78db615b","member":"rathole_modified"},
+  "Rathole:modified-ubuntu22:amd64": {"version":"musixal-ed49cdd-u22","url":"https://raw.githubusercontent.com/Musixal/Rathole-Tunnel/ed49cdd88945d366141fa473dc996a6c0e57983d/core/rathole_modified_ubuntu22.zip","sha256":"01525bc588a2fc7e4ac801378bb3d73ccb1a6defbb5be0db506b33111475518b","member":"rathole_modified"}
+}

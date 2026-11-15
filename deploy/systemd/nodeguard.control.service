@@ -1,0 +1,25 @@
+[Unit]
+Description=NodeGuard control plane
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=exec
+User=nodeguard-control
+Group=nodeguard-control
+WorkingDirectory=/opt/nodeguard
+LoadCredential=control.env:/etc/nodeguard/control-plane/control.env
+ExecStart=/usr/bin/node --env-file=${CREDENTIALS_DIRECTORY}/control.env /opt/nodeguard/node_modules/next/dist/bin/next start --hostname 127.0.0.1 --port 3000
+StateDirectory=nodeguard-control
+StateDirectoryMode=0700
+UMask=0077
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+SuccessExitStatus=143
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target
